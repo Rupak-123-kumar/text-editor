@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text Editor</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex items-center justify-center min-h-screen bg-gray-100">
+  <div class="w-full max-w-2xl p-6 bg-white rounded-lg shadow-md">
+    <h2 class="text-2xl font-bold text-center text-gray-800 mb-4">Text Editor</h2>
+    
+    <!-- Toolbar -->
+    <div class="flex items-center justify-between mb-4">
+      <button onclick="formatText('bold')" class="px-3 py-2 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600">
+        Bold
+      </button>
+      <button onclick="formatText('italic')" class="px-3 py-2 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600">
+        Italic
+      </button>
+      <button onclick="formatText('underline')" class="px-3 py-2 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600">
+        Underline
+      </button>
+      <button onclick="clearText()" class="px-3 py-2 text-sm font-medium text-white bg-red-500 rounded-lg hover:bg-red-600">
+        Clear
+      </button>
+    </div>
+
+    <!-- Text Area -->
+    <div id="editor" 
+         contenteditable="true" 
+         class="w-full h-64 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none">
+      Start typing here...
+    </div>
+  </div>
+
+  <script>
+    // Function to format selected text
+    function formatText(command) {
+      document.execCommand(command, false, null);
+    }
+
+    // Function to clear the editor
+    function clearText() {
+      const editor = document.getElementById('editor');
+      editor.innerHTML = ''; // Clear content
+    }
+  </script>
+</body>
+</html>
